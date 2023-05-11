@@ -1,15 +1,22 @@
 package br.com.sgfly.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import br.com.sgfly.model.DadosPlanoContas;
+import br.com.sgfly.service.PlanoContasService;
+import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("services/planoContas")
 public class PlanoContasController {
 
-    @GetMapping
-    public String olaMundo(){
-        return "Hello World Spring!";
+    @Autowired
+    PlanoContasService planoContasService;
+
+    @PostMapping
+    @Transactional
+    public void incluirPlanoContas(@RequestBody DadosPlanoContas dados) {
+        planoContasService.incluirPlanoConta(dados);
     }
 }
