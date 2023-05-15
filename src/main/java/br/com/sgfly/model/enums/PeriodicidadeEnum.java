@@ -1,19 +1,20 @@
 package br.com.sgfly.model.enums;
 
 import lombok.Getter;
-
 @Getter
 public enum PeriodicidadeEnum {
 
-    DIARIA("DIARIA"),
-    SEMANAL("SEMANAL"),
-    MENSAL("MENSAL"),
-    ANUAL("ANUAL");
+    DIARIA("DIARIA", "Diária"),
+    SEMANAL("SEMANAL", "Semanal"),
+    MENSAL("MENSAL", "Mensal"),
+    ANUAL("ANUAL", "Anual");
 
     private final String value;
+    private final String description;
 
-    PeriodicidadeEnum(String value){
+    PeriodicidadeEnum(String value,String description){
         this.value = value;
+        this.description = description;
     }
 
     public static PeriodicidadeEnum parse(String value) {
