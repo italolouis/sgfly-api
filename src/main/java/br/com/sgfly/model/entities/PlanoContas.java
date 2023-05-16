@@ -8,8 +8,10 @@ import br.com.sgfly.model.enums.PeriodicidadeEnum;
 import br.com.sgfly.model.enums.StatusEnum;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Table(name = "sg_plano_contas")
 @Entity(name = "PlanoContas")

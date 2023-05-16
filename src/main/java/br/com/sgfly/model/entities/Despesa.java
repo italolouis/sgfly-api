@@ -6,15 +6,15 @@ import br.com.sgfly.model.converter.CategoriaConverter;
 import br.com.sgfly.model.converter.PeriodicidadeConverter;
 import br.com.sgfly.model.enums.CategoriaEnum;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Table(name = "sg_despesa")
 @Entity(name = "ContasPagar")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
@@ -27,12 +27,15 @@ public class Despesa {
     @Column(name = "descricao", nullable = false)
     private String descricao;
 
+    @Column(name = "valor", nullable = false)
+    private Integer valor;
+
     @ManyToOne
-    @JoinColumn(name = "plano_id")
+    @JoinColumn(name = "plano_id", nullable = false)
     private PlanoContas planoContas;
 
-    @Column(name = "data", nullable = false)
-    private LocalDateTime data;
+    @Column(name = "data_cadastro", nullable = false)
+    private LocalDateTime dataCadastro;
 
     @Column(name = "categoria", nullable = false)
     @Convert(converter = CategoriaConverter.class)
@@ -51,8 +54,9 @@ public class Despesa {
     public Despesa(DadosDespesa dadosDespesa){
         this.id = dadosDespesa.id();
         this.descricao = dadosDespesa.descricao();
-        this.planoContas = dadosDespesa.planoContas();
-        this.data = dadosDespesa.data();
+        this.valor = dadosDespesa.valor();
+        this.planoContas = new PlanoContas(dadosDespesa.planoContas());
+        this.dataCadastro = dadosDespesa.dataCadastro();
         this.categoria = dadosDespesa.categoria();
         this.observacao = dadosDespesa.observacao();
         this.dataVencimento = dadosDespesa.dataVencimento();
