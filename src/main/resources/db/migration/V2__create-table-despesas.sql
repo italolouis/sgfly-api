@@ -1,9 +1,10 @@
-create table sg_contas_pagar(
+create table sg_despesa(
     id bigint not null auto_increment,
     descricao varchar(200) not null,
     plano_id bigint not null,
-    data_lancamento date,
+    data date,
     categoria varchar(120) not null,
+    repeticao varchar(20),
     observacao varchar(500),
     data_vencimento date not null,
     pago varchar(1),
