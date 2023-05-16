@@ -2,6 +2,7 @@ package br.com.sgfly.model;
 
 import br.com.sgfly.model.entities.PlanoContas;
 import br.com.sgfly.model.enums.PeriodicidadeEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDateTime;
@@ -19,9 +20,11 @@ public record DadosPlanoContas(
         PeriodicidadeEnum periodicidade,
 
         @NotBlank
+        @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
         LocalDateTime dataInicio,
 
         @NotBlank
+        @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
         LocalDateTime dataFim
 ) {
         public DadosPlanoContas(PlanoContas planoContas){

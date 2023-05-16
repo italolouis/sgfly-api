@@ -8,7 +8,8 @@ public enum CategoriaEnum {
     SAUDE("SAUDE"),
     TRANSPORTE("TRANSPORTE"),
     LAZER("LAZER"),
-    ALIMENTACAO("ALIMENTACAO");
+    ALIMENTACAO("ALIMENTACAO"),
+    OUTROS("OUTROS");
 
     private final String value;
 

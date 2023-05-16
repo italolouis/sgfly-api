@@ -2,6 +2,8 @@ package br.com.sgfly.model;
 
 import br.com.sgfly.model.entities.Despesa;
 import br.com.sgfly.model.enums.CategoriaEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDateTime;
 
 public record DadosDespesa(
@@ -9,9 +11,11 @@ public record DadosDespesa(
         String descricao,
         Integer valor,
         DadosPlanoContas planoContas,
+        @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
         LocalDateTime dataCadastro,
         CategoriaEnum categoria,
         String observacao,
+        @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
         LocalDateTime dataVencimento,
         Boolean pago
 

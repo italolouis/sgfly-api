@@ -31,7 +31,7 @@ public class DespesaController {
     }
 
     @GetMapping
-    public Page<DadosDespesa> buscarDespesas(@PageableDefault(size = 10, page = 0, sort = {"id"}) Pageable pageable) {
+    public Page<DadosDespesa> buscarDespesas(@PageableDefault(size = 8, page = 0, sort = {"dataVencimento"}) Pageable pageable) {
         return despesaService.buscarDespesas(pageable);
     }
 
