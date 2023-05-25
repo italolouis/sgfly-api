@@ -1,10 +1,9 @@
 package br.com.sgfly.service;
 
 import br.com.sgfly.model.DadosDespesa;
-import br.com.sgfly.model.DadosPlanoContas;
 import br.com.sgfly.model.entities.Despesa;
 import br.com.sgfly.model.entities.PlanoContas;
-import br.com.sgfly.model.enums.StatusEnum;
+import br.com.sgfly.model.filters.FilterDespesas;
 import br.com.sgfly.repositories.DespesaRepository;
 import br.com.sgfly.repositories.PlanoContasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ public class DespesaService {
         despesaRepository.save(despesa);
     }
 
-    public Page<DadosDespesa> buscarDespesas(Pageable pageable) {
+    public Page<DadosDespesa> buscarDespesas(FilterDespesas filterDespesas, Pageable pageable) {
         return despesaRepository.findAll(pageable).map(DadosDespesa::new);
     }
 }

@@ -1,9 +1,8 @@
 package br.com.sgfly.controller;
 
 import br.com.sgfly.model.DadosDespesa;
-import br.com.sgfly.model.DadosPlanoContas;
 import br.com.sgfly.model.enums.CategoriaEnum;
-import br.com.sgfly.model.enums.PeriodicidadeEnum;
+import br.com.sgfly.model.filters.FilterDespesas;
 import br.com.sgfly.service.DespesaService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +30,9 @@ public class DespesaController {
     }
 
     @GetMapping
-    public Page<DadosDespesa> buscarDespesas(@PageableDefault(size = 8, page = 0, sort = {"dataVencimento"}) Pageable pageable) {
-        return despesaService.buscarDespesas(pageable);
+    public Page<DadosDespesa> buscarDespesas(@PageableDefault(size = 8, page = 0, sort = {"dataVencimento"})
+                                             FilterDespesas filterDespesas, Pageable pageable) {
+        return despesaService.buscarDespesas(filterDespesas, pageable);
     }
 
     @GetMapping("/categorias")
