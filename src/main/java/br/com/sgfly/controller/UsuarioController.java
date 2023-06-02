@@ -1,6 +1,5 @@
 package br.com.sgfly.controller;
 
-
 import br.com.sgfly.model.DadosUsuario;
 import br.com.sgfly.service.UsuarioService;
 import jakarta.transaction.Transactional;

@@ -14,13 +14,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Component
 public class FilterToken extends OncePerRequestFilter {
-    private static final List<String>  EXCLUDE_URL = Arrays.asList("/authentication");
+    private static final List<String> EXCLUDE_URL = Arrays.asList("/authentication", "/usuario");
 
     @Autowired
     private TokenService tokenService;

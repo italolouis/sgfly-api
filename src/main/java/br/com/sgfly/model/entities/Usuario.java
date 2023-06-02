@@ -38,7 +38,7 @@ public class Usuario implements UserDetails {
 
     public Usuario(DadosUsuario dadosUsuario){
         this.id = dadosUsuario.id();
-        this.cpfCnpj = dadosUsuario.cfpCnpj();
+        this.cpfCnpj = dadosUsuario.cpfCnpj();
         this.nome = dadosUsuario.nome();
         this.login = dadosUsuario.login();
         this.senha = dadosUsuario.senha();

@@ -1,8 +1,8 @@
 package br.com.sgfly.controller;
 
-import br.com.sgfly.model.DadosDespesa;
+import br.com.sgfly.model.DadosReceita;
 import br.com.sgfly.model.enums.CategoriaEnum;
-import br.com.sgfly.service.DespesaService;
+import br.com.sgfly.service.ReceitaService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,28 +19,28 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("services/despesa")
-public class DespesaController {
+@RequestMapping("services/receita")
+public class ReceitaController {
     @Autowired
-    DespesaService despesaService;
+    ReceitaService receitaService;
 
     @PostMapping
     @Transactional
-    public void incluirDespesa(@RequestBody DadosDespesa dados) {
+    public void incluirReceita(@RequestBody DadosReceita dados) {
         //Cadastrar despesa
-        despesaService.incluirDespesa(dados);
+        receitaService.incluirReceita(dados);
     }
 
 
     @GetMapping
-    public Page<DadosDespesa> buscarDespesas(@RequestParam(required=false) String descricao,
+    public Page<DadosReceita> buscarDespesas(@RequestParam(required=false) String descricao,
                                              @RequestParam(required = false) @DateTimeFormat(pattern="dd/MM/yyyy HH:mm:ss") LocalDateTime dataInicial,
                                              @RequestParam(required = false) @DateTimeFormat(pattern="dd/MM/yyyy HH:mm:ss") LocalDateTime dataFinal,
                                              @RequestParam(required=false) Long planoId,
                                              @RequestParam(required=false) String categoria,
                                              @PageableDefault(size = 8, page = 0, sort = {"dataVencimento"},
                                                      direction = Sort.Direction.ASC) Pageable pageable) {
-        return despesaService.buscarDespesas(descricao, dataInicial, dataFinal, planoId, categoria, pageable);
+        return receitaService.buscarReceitas(descricao, dataInicial, dataFinal, planoId, categoria, pageable);
     }
 
     @GetMapping("/categorias")
