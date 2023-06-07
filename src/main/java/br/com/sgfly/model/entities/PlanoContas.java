@@ -10,6 +10,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.cglib.core.Local;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -25,6 +26,9 @@ public class PlanoContas {
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
+    private Usuario cliente;
     private String descricao;
     @Convert(converter = BooleanConverter.class)
     private Boolean padrao;
@@ -33,10 +37,10 @@ public class PlanoContas {
     @Convert(converter = PeriodicidadeConverter.class)
     private PeriodicidadeEnum periodicidade;
     @Column(name = "data_inicio", nullable = false)
-    private LocalDateTime dataInicio;
+    private LocalDate dataInicio;
 
     @Column(name = " data_fim", nullable = false)
-    private LocalDateTime dataFim;
+    private LocalDate dataFim;
 
     public PlanoContas(DadosPlanoContas dados) {
         this.descricao = dados.descricao();

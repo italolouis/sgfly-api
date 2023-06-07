@@ -1,6 +1,9 @@
 package br.com.sgfly.model.entities;
 
 import br.com.sgfly.model.DadosUsuario;
+import br.com.sgfly.model.converter.BooleanConverter;
+import br.com.sgfly.model.converter.StatusConverter;
+import br.com.sgfly.model.enums.StatusEnum;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -33,6 +36,8 @@ public class Usuario implements UserDetails {
     private String senha;
     @Column(name = "data_cadastro", nullable = false)
     private LocalDateTime dataCadastro;
+    @Convert(converter = StatusConverter.class)
+    private StatusEnum status;
     @Transient
     private String token;
 

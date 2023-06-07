@@ -1,7 +1,7 @@
 package br.com.sgfly.controller;
 
 import br.com.sgfly.model.DadosUsuario;
-import br.com.sgfly.service.UsuarioService;
+import br.com.sgfly.service.impl.UsuarioService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -2,7 +2,7 @@ package br.com.sgfly.controller;
 
 import br.com.sgfly.model.DadosDespesa;
 import br.com.sgfly.model.enums.CategoriaEnum;
-import br.com.sgfly.service.DespesaService;
+import br.com.sgfly.service.impl.DespesaService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

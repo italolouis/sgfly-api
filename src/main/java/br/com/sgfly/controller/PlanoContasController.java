@@ -2,7 +2,7 @@ package br.com.sgfly.controller;
 
 import br.com.sgfly.model.DadosPlanoContas;
 import br.com.sgfly.model.enums.PeriodicidadeEnum;
-import br.com.sgfly.service.PlanoContasService;
+import br.com.sgfly.service.impl.PlanoContasService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,6 +26,7 @@ public class PlanoContasController {
     @PostMapping
     @Transactional
     public void incluirPlanoContas(@RequestBody DadosPlanoContas dados) {
+
         planoContasService.incluirPlanoConta(dados);
     }
 

@@ -2,7 +2,7 @@ package br.com.sgfly.controller;
 
 import br.com.sgfly.model.DadosReceita;
 import br.com.sgfly.model.enums.CategoriaEnum;
-import br.com.sgfly.service.ReceitaService;
+import br.com.sgfly.service.impl.ReceitaService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -37,10 +37,9 @@ public class ReceitaController {
                                              @RequestParam(required = false) @DateTimeFormat(pattern="dd/MM/yyyy HH:mm:ss") LocalDateTime dataInicial,
                                              @RequestParam(required = false) @DateTimeFormat(pattern="dd/MM/yyyy HH:mm:ss") LocalDateTime dataFinal,
                                              @RequestParam(required=false) Long planoId,
-                                             @RequestParam(required=false) String categoria,
-                                             @PageableDefault(size = 8, page = 0, sort = {"dataVencimento"},
+                                             @PageableDefault(size = 8, page = 0, sort = {"dataRecebimento"},
                                                      direction = Sort.Direction.ASC) Pageable pageable) {
-        return receitaService.buscarReceitas(descricao, dataInicial, dataFinal, planoId, categoria, pageable);
+        return receitaService.buscarReceitas(descricao, dataInicial, dataFinal, planoId, pageable);
     }
 
     @GetMapping("/categorias")

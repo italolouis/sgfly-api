@@ -1,0 +1,21 @@
+create table sg_lancamento(
+    id bigint not null auto_increment,
+    cliente_id bigint not null,
+    plano_id bigint not null,
+    status char(20) not null,
+    descricao varchar(200) not null,
+    tipo varchar(12) not null,
+    fixo varchar(1),
+    valor numeric not null,
+    data_vencimento date,
+    data_recebimento date,
+    data_cadastro date not null,
+    categoria varchar(120),
+    observacao varchar(500),
+    cod_barras varchar(300),
+    pago_recebido varchar(1),
+    data_pagamento date,
+    primary key(id),
+    constraint fk_client_id_lancamento FOREIGN KEY (cliente_id) REFERENCES sg_usuario (id),
+    constraint fk_plano_id_lancamento FOREIGN KEY (plano_id) REFERENCES sg_plano_contas (id)
+);
