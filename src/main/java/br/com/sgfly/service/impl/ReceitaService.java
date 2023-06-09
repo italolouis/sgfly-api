@@ -90,6 +90,6 @@ public class ReceitaService {
 
     public BigDecimal getSumReceitasByPeriod(Long planoId, LocalDate dataInicio, LocalDate dataFim){
         Long clienteId = authenticationService.getLoggedUser().getId();
-        return receitaRepository.sumReceitasByPeriod(planoId, dataInicio, dataFim, clienteId);
+        return receitaRepository.sumReceitasByPeriod(planoId, dataInicio, dataFim, clienteId, StatusEnum.ATIVO);
     }
 }

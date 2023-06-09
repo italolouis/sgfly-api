@@ -15,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -91,6 +90,6 @@ public class DespesaService {
 
     public BigDecimal getSumDespesasByPeriod(Long planoId, LocalDate dataInicio, LocalDate dataFinal){
         Long clienteId = authenticationService.getLoggedUser().getId();
-        return despesaRepository.sumDespesasByPeriod(planoId, dataInicio, dataFinal, clienteId);
+        return despesaRepository.sumDespesasByPeriod(planoId, dataInicio, dataFinal, clienteId, StatusEnum.ATIVO);
     }
 }

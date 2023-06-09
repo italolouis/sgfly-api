@@ -36,10 +36,12 @@ public interface ReceitaRepository extends JpaRepository<Receita, Long> {
     @Query("SELECT SUM(r.valor) FROM Receita r " +
             "WHERE r.dataRecebimento BETWEEN :dataInicial AND :dataFinal AND"
             + " (r.cliente.id = :clienteId) AND"
-            + " (r.planoContas.id = :planoId)")
+            + " (r.planoContas.id = :planoId) AND"
+            + " (r.status  = :status)")
     BigDecimal sumReceitasByPeriod(
             @Param("planoId") Long planoId,
             @Param("dataInicial") LocalDate dataInicial,
             @Param("dataFinal") LocalDate dataFinal,
-            @Param("clienteId") Long clienteId);
+            @Param("clienteId") Long clienteId,
+            @Param("status") StatusEnum status);
 }

@@ -37,10 +37,12 @@ public interface DespesaRepository extends JpaRepository<Despesa, Long> {
     @Query("SELECT SUM(d.valor) FROM Despesa d " +
             "WHERE d.dataVencimento BETWEEN :dataInicial AND :dataFinal AND"
             + " (d.cliente.id = :clienteId) AND"
-            + " (d.planoContas.id = :planoId)")
+            + " (d.planoContas.id = :planoId) AND"
+            + " (d.status = :status)")
     BigDecimal sumDespesasByPeriod(
             @Param("planoId") Long planoId,
             @Param("dataInicial") LocalDate dataInicial,
             @Param("dataFinal") LocalDate dataFinal,
-            @Param("clienteId") Long clienteId);
+            @Param("clienteId") Long clienteId,
+            @Param("status") StatusEnum status);
 }
