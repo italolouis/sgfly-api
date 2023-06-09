@@ -4,10 +4,7 @@ import lombok.Getter;
 @Getter
 public enum PeriodicidadeEnum {
 
-    DIARIA("DIARIA", "Diária"),
-    SEMANAL("SEMANAL", "Semanal"),
-    MENSAL("MENSAL", "Mensal"),
-    ANUAL("ANUAL", "Anual");
+    MENSAL("MENSAL", "Mensal");
 
     private final String value;
     private final String description;

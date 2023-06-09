@@ -8,6 +8,7 @@ import br.com.sgfly.model.enums.StatusEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Table(name = "sg_lancamento")
@@ -41,7 +42,7 @@ public class Lancamento {
     private Boolean fixo;
 
     @Column(name = "valor", nullable = false)
-    private Integer valor;
+    private BigDecimal valor;
 
     @Column(name = "data_cadastro", nullable = false)
     private LocalDateTime dataCadastro;

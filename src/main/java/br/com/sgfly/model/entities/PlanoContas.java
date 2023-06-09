@@ -36,6 +36,9 @@ public class PlanoContas {
     private StatusEnum status;
     @Convert(converter = PeriodicidadeConverter.class)
     private PeriodicidadeEnum periodicidade;
+
+    @Column(name = "data_cadastro", nullable = false)
+    private LocalDateTime dataCadastro;
     @Column(name = "data_inicio", nullable = false)
     private LocalDate dataInicio;
 

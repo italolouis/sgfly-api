@@ -6,7 +6,7 @@ create table sg_lancamento(
     descricao varchar(200) not null,
     tipo varchar(12) not null,
     fixo varchar(1),
-    valor numeric not null,
+    valor decimal(10, 2) not null,
     data_vencimento date,
     data_recebimento date,
     data_cadastro date not null,

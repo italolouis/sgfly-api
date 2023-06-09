@@ -4,13 +4,14 @@ import br.com.sgfly.model.entities.Despesa;
 import br.com.sgfly.model.enums.CategoriaEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public record DadosDespesa(
         Long id,
         String descricao,
-        Integer valor,
+        BigDecimal valor,
         DadosPlanoContas planoContas,
         CategoriaEnum categoria,
         String observacao,

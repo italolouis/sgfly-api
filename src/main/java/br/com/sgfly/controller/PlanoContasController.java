@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 @RestController
 @RequestMapping("services/planoContas")
@@ -31,12 +30,18 @@ public class PlanoContasController {
     }
 
     @GetMapping
-    public Page<DadosPlanoContas> getPlanoContas(@PageableDefault(size = 10, page = 0, sort = {"id"}) Pageable pageable) {
-        return planoContasService.getPlano(pageable);
+    public Page<DadosPlanoContas> getPlanoContas(@RequestParam(required=false) String descricao,
+            @PageableDefault(size = 10, page = 0, sort = {"id"}) Pageable pageable) {
+        return planoContasService.getPlanos(descricao, pageable);
+    }
+
+    @GetMapping("/planoPadrao")
+    public ResponseEntity<DadosPlanoContas> getPlanoPadrao() {
+        return planoContasService.getPlanoPadrao();
     }
 
     @GetMapping("/allPlans")
-    public Stream<DadosPlanoContas> getPlanoContas() {
+    public ResponseEntity<DadosPlanoContas> getPlanoContas() {
         return planoContasService.getAllPlano();
     }
 
