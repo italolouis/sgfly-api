@@ -56,12 +56,11 @@ public class ReceitaService {
 
     public void atualizarReceita(DadosReceita dadosReceita) {
         Receita receitaEntity = receitaRepository.findById(dadosReceita.id()).orElseThrow(()
-                -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Receira não encontrada!"));
+                -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Receita não encontrada!"));
 
         receitaEntity.setObservacao(dadosReceita.observacao());
         receitaEntity.setDataRecebimento(dadosReceita.dataRecebimento());
         receitaEntity.setDescricao(dadosReceita.descricao());
-        receitaEntity.setPlanoContas(new PlanoContas(dadosReceita.planoContas()));
         receitaEntity.setValor(dadosReceita.valor());
         receitaRepository.save(receitaEntity);
     }

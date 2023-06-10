@@ -37,14 +37,14 @@ public class ReceitaController {
 
     @PatchMapping
     @Transactional
-    public void atualizarDespesa(@RequestBody DadosReceita dados) {
+    public void atualizarReceita(@RequestBody DadosReceita dados) {
         //Atualizar despesa
         receitaService.atualizarReceita(dados);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletarDespesa(@PathVariable Long id) throws ServiceException {
+    public void deletarReceita(@PathVariable Long id) throws ServiceException {
         receitaService.deletarReceita(id);
     }
 
