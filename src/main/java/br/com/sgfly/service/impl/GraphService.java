@@ -51,14 +51,18 @@ public class GraphService {
                         List<SerieItem> serieItemList = new ArrayList<>();
                         SerieItem serieItem = new SerieItem();
 
-                        serieItem.setName("DESPESA");
                         serieItem.setValue(despesaService.getSumDespesasByPeriod(plano.getId(), dataInicio, dataFim));
-                        serieItemList.add(serieItem);
+                        if(serieItem.getValue() != null){
+                            serieItem.setName("DESPESA");
+                            serieItemList.add(serieItem);
+                        }
 
                         serieItem = new SerieItem();
-                        serieItem.setName("RECEITA");
                         serieItem.setValue(receitaService.getSumReceitasByPeriod(plano.getId(), dataInicio, dataFim));
-                        serieItemList.add(serieItem);
+                        if(serieItem.getValue() != null){
+                            serieItem.setName("RECEITA");
+                            serieItemList.add(serieItem);
+                        }
 
                         graph.setSeries(serieItemList);
                         listDataGraph.add(graph);
