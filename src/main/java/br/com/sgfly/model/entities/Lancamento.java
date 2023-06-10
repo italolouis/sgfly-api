@@ -44,8 +44,14 @@ public class Lancamento {
     @Column(name = "valor", nullable = false)
     private BigDecimal valor;
 
+    @Convert(converter = StatusConverter.class)
+    private StatusEnum status;
+
     @Column(name = "data_cadastro", nullable = false)
     private LocalDateTime dataCadastro;
+
+    @Column(name = "data_pagamento")
+    private LocalDateTime dataPagamento;
 
     @Column(name = "observacao")
     private String observacao;
@@ -54,9 +60,5 @@ public class Lancamento {
     @Convert(converter = BooleanConverter.class)
     private Boolean pagoRecebido;
 
-    @Column(name = "data_pagamento")
-    private LocalDateTime dataPagamento;
 
-    @Convert(converter = StatusConverter.class)
-    private StatusEnum status;
 }
