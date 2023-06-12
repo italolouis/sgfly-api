@@ -11,11 +11,9 @@ public class CorsConfig implements WebMvcConfigurer {
 
     public void addCorsMappings(CorsRegistry registry){
         registry.addMapping("/**")
-                .allowedOrigins("*")
-                .allowedOrigins("http://localhost:4200")
+                .allowedOrigins("*", "https://sgfly-35251.web.app", "http://localhost:4200")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "PATCH")
-                .allowedHeaders("*")
-                .allowedHeaders("Authorization", "Content-type", "x-auth-token");
+                .allowedHeaders("*");
         ;
     }
 }
