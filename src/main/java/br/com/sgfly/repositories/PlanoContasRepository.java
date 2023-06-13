@@ -4,6 +4,7 @@ import br.com.sgfly.model.entities.Despesa;
 import br.com.sgfly.model.entities.PlanoContas;
 import br.com.sgfly.model.enums.CategoriaEnum;
 import br.com.sgfly.model.enums.StatusEnum;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +18,7 @@ public interface PlanoContasRepository extends JpaRepository<PlanoContas, Long> 
             + " (pc.cliente.id = :clienteId) AND"
             + " (pc.status = :status)"
             + " ORDER BY pc.dataCadastro ASC")
-    List<PlanoContas> findPlanosContasGeral(
+    Page<PlanoContas> findPlanosContasGeral(
             @Param("descricao") String descricao,
             @Param("clienteId") Long clienteId,
             @Param("status") StatusEnum status,

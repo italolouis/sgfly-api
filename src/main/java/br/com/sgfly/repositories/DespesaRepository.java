@@ -3,6 +3,7 @@ package br.com.sgfly.repositories;
 import br.com.sgfly.model.entities.Despesa;
 import br.com.sgfly.model.enums.CategoriaEnum;
 import br.com.sgfly.model.enums.StatusEnum;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -23,7 +24,7 @@ public interface DespesaRepository extends JpaRepository<Despesa, Long> {
             + " (desp.cliente.id = :clienteId) AND"
             + " (desp.status = :status)"
             + " ORDER BY desp.dataVencimento ASC")
-    List<Despesa> findDespesasGeral(
+    Page<Despesa> findDespesasGeral(
             @Param("descricao") String descricao,
             @Param("dataInicial") LocalDate dataInicial,
             @Param("dataFinal") LocalDate dataFinal,

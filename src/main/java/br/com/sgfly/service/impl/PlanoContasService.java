@@ -62,11 +62,11 @@ public class PlanoContasService {
     public Page<DadosPlanoContas> getPlanos(String descricao, Pageable pageable) {
         Long clienteId = authenticationService.getLoggedUser().getId();
 
-        List<PlanoContas> dadosPlanos =  planoContasRepository.findPlanosContasGeral(
+        Page<PlanoContas> dadosPlanos =  planoContasRepository.findPlanosContasGeral(
                 descricao, clienteId, StatusEnum.ATIVO, pageable);
 
         var elements = dadosPlanos.stream().map(planoContas -> new DadosPlanoContas(planoContas)).collect(Collectors.toList());
-        return new PageImpl<>(elements);
+        return new PageImpl<>(elements, pageable, dadosPlanos.getTotalElements());
     }
 
     public ResponseEntity<DadosPlanoContas> getAllPlano() {

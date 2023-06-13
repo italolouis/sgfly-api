@@ -80,11 +80,11 @@ public class ReceitaService {
 
     public Page<DadosReceita> buscarReceitas(String descricao, LocalDate dataInicial, LocalDate dataFinal, Long planoId, Pageable pageable) {
         Long clienteId = authenticationService.getLoggedUser().getId();
-        List<Receita> dadosReceita =  receitaRepository.findReceitasGeral(
+        Page<Receita> dadosReceita =  receitaRepository.findReceitasGeral(
                 descricao, dataInicial, dataFinal, planoId, clienteId, StatusEnum.ATIVO, pageable);
 
         var elements = dadosReceita.stream().map(receita -> new DadosReceita(receita)).collect(Collectors.toList());
-        return new PageImpl<>(elements);
+        return new PageImpl<>(elements, pageable, dadosReceita.getTotalElements());
     }
 
     public BigDecimal getSumReceitasByPeriod(Long planoId, LocalDate dataInicio, LocalDate dataFim){

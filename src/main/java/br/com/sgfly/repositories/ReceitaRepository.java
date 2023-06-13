@@ -4,6 +4,7 @@ import br.com.sgfly.model.entities.Despesa;
 import br.com.sgfly.model.entities.Receita;
 import br.com.sgfly.model.enums.CategoriaEnum;
 import br.com.sgfly.model.enums.StatusEnum;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -24,7 +25,7 @@ public interface ReceitaRepository extends JpaRepository<Receita, Long> {
             + " (rec.cliente.id = :clienteId) AND"
             + " (rec.status  = :status)"
             + " ORDER BY rec.dataRecebimento desc")
-    List<Receita> findReceitasGeral(
+    Page<Receita> findReceitasGeral(
             @Param("descricao") String descricao,
             @Param("dataInicial") LocalDate dataInicial,
             @Param("dataFinal") LocalDate dataFinal,

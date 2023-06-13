@@ -79,13 +79,13 @@ public class DespesaService {
     public Page<DadosDespesa> buscarDespesas(String descricao, LocalDate dataInicial, LocalDate dataFinal, Long planoId, String categoria, Pageable pageable) {
         Long clienteId = authenticationService.getLoggedUser().getId();
 
-        List<Despesa> dadosDespesas =  despesaRepository.findDespesasGeral(
+        Page<Despesa> dadosDespesas =  despesaRepository.findDespesasGeral(
                 descricao, dataInicial, dataFinal, planoId, CategoriaEnum.parse(categoria),
                  clienteId, StatusEnum.ATIVO, pageable);
 
         var elements = dadosDespesas.stream().map(despesas ->
                 new DadosDespesa(despesas)).collect(Collectors.toList());
-        return new PageImpl<>(elements);
+        return new PageImpl<>(elements, pageable, dadosDespesas.getTotalElements());
     }
 
     public BigDecimal getSumDespesasByPeriod(Long planoId, LocalDate dataInicio, LocalDate dataFinal){
