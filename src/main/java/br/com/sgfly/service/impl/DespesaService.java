@@ -38,8 +38,6 @@ public class DespesaService {
 
     public void incluirDespesa(DadosDespesa dadosDespesa) {
         Despesa despesa = new Despesa(dadosDespesa);
-
-        //TODO - retirar quando implementar funcionalidade de fixo
         despesa.setFixo(Boolean.FALSE);
         despesa.setDataCadastro(LocalDateTime.now());
         despesa.setCliente(authenticationService.getLoggedUser());
